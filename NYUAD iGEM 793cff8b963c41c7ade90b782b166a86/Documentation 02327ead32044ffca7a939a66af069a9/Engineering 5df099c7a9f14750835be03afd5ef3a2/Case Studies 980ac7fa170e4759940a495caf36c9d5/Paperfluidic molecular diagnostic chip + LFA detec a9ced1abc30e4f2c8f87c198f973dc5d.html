@@ -1,0 +1,630 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Paperfluidic molecular diagnostic chip + LFA detection + Electrical Heating</title><style>
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, YuMincho, "Yu Mincho", "Hiragino Mincho ProN", "Hiragino Mincho Pro", "Songti TC", "Songti SC", "SimSun", "Nanum Myeongjo", NanumMyeongjo, Batang, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC', 'Noto Sans CJK KR'; }
+
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC', 'Noto Sans Mono CJK KR'; }
+
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, YuMincho, "Yu Mincho", "Hiragino Mincho ProN", "Hiragino Mincho Pro", "Songti TC", "Songti SC", "SimSun", "Nanum Myeongjo", NanumMyeongjo, Batang, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC', 'Noto Sans CJK KR'; }
+
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC', 'Noto Sans Mono CJK KR'; }
+
+.highlight-default {
+}
+.highlight-gray {
+	color: rgb(155,154,151);
+}
+.highlight-brown {
+	color: rgb(100,71,58);
+}
+.highlight-orange {
+	color: rgb(217,115,13);
+}
+.highlight-yellow {
+	color: rgb(223,171,1);
+}
+.highlight-teal {
+	color: rgb(15,123,108);
+}
+.highlight-blue {
+	color: rgb(11,110,153);
+}
+.highlight-purple {
+	color: rgb(105,64,165);
+}
+.highlight-pink {
+	color: rgb(173,26,114);
+}
+.highlight-red {
+	color: rgb(224,62,62);
+}
+.highlight-gray_background {
+	background: rgb(235,236,237);
+}
+.highlight-brown_background {
+	background: rgb(233,229,227);
+}
+.highlight-orange_background {
+	background: rgb(250,235,221);
+}
+.highlight-yellow_background {
+	background: rgb(251,243,219);
+}
+.highlight-teal_background {
+	background: rgb(221,237,234);
+}
+.highlight-blue_background {
+	background: rgb(221,235,241);
+}
+.highlight-purple_background {
+	background: rgb(234,228,242);
+}
+.highlight-pink_background {
+	background: rgb(244,223,235);
+}
+.highlight-red_background {
+	background: rgb(251,228,228);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(55, 53, 47, 0.6);
+	fill: rgba(55, 53, 47, 0.6);
+}
+.block-color-brown {
+	color: rgb(100,71,58);
+	fill: rgb(100,71,58);
+}
+.block-color-orange {
+	color: rgb(217,115,13);
+	fill: rgb(217,115,13);
+}
+.block-color-yellow {
+	color: rgb(223,171,1);
+	fill: rgb(223,171,1);
+}
+.block-color-teal {
+	color: rgb(15,123,108);
+	fill: rgb(15,123,108);
+}
+.block-color-blue {
+	color: rgb(11,110,153);
+	fill: rgb(11,110,153);
+}
+.block-color-purple {
+	color: rgb(105,64,165);
+	fill: rgb(105,64,165);
+}
+.block-color-pink {
+	color: rgb(173,26,114);
+	fill: rgb(173,26,114);
+}
+.block-color-red {
+	color: rgb(224,62,62);
+	fill: rgb(224,62,62);
+}
+.block-color-gray_background {
+	background: rgb(235,236,237);
+}
+.block-color-brown_background {
+	background: rgb(233,229,227);
+}
+.block-color-orange_background {
+	background: rgb(250,235,221);
+}
+.block-color-yellow_background {
+	background: rgb(251,243,219);
+}
+.block-color-teal_background {
+	background: rgb(221,237,234);
+}
+.block-color-blue_background {
+	background: rgb(221,235,241);
+}
+.block-color-purple_background {
+	background: rgb(234,228,242);
+}
+.block-color-pink_background {
+	background: rgb(244,223,235);
+}
+.block-color-red_background {
+	background: rgb(251,228,228);
+}
+.select-value-color-default { background-color: rgba(206,205,202,0.5); }
+.select-value-color-gray { background-color: rgba(155,154,151, 0.4); }
+.select-value-color-brown { background-color: rgba(140,46,0,0.2); }
+.select-value-color-orange { background-color: rgba(245,93,0,0.2); }
+.select-value-color-yellow { background-color: rgba(233,168,0,0.2); }
+.select-value-color-green { background-color: rgba(0,135,107,0.2); }
+.select-value-color-blue { background-color: rgba(0,120,223,0.2); }
+.select-value-color-purple { background-color: rgba(103,36,222,0.2); }
+.select-value-color-pink { background-color: rgba(221,0,129,0.2); }
+.select-value-color-red { background-color: rgba(255,0,26,0.2); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="a9ced1ab-c30e-4f2c-8f87-c198f973dc5d" class="page sans"><header><h1 class="page-title">Paperfluidic molecular diagnostic chip + LFA detection + Electrical Heating</h1></header><div class="page-body"><figure id="3c535bda-d572-40dd-9b8c-940d03b9a4c3"><a href="https://pubs.rsc.org/ko/content/articlehtml/2016/lc/c5lc01392e" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">A fully integrated paperfluidic molecular diagnostic chip for the extraction, amplification, and detection of nucleic acids from clinical samples</div><div class="bookmark-description">Paper diagnostics have successfully been employed to detect the presence of antigens or small molecules in clinical samples through immunoassays; however, the detection of many disease targets relies on the much higher sensitivity and specificity achieved via nucleic acid amplification tests (NAAT). The step</div></div><div class="bookmark-href"><img src="https://pubs.rsc.org/favicon-16x16.png" class="icon bookmark-icon"/>https://pubs.rsc.org/ko/content/articlehtml/2016/lc/c5lc01392e</div></div><img src="https://pubs.rsc.org/en/Content/Image/GA/C5LC01392E" class="bookmark-image"/></a></figure><p id="c56cadaf-8277-469a-a235-e5dd1ce44fb4" class="">
+</p><h3 id="05df7be4-327c-45e8-b9a8-684085baac1e" class="">Device Setup -Production (Origami-like method):</h3><figure id="3c20ce53-bcc2-4c64-9fa8-04a8b85cfce1" class="image"><a href="Paperfluidic%20molecular%20diagnostic%20chip%20+%20LFA%20detec%20a9ced1abc30e4f2c8f87c198f973dc5d/Untitled.png"><img style="width:1612px" src="Paperfluidic%20molecular%20diagnostic%20chip%20+%20LFA%20detec%20a9ced1abc30e4f2c8f87c198f973dc5d/Untitled.png"/></a><figcaption>Fig. 1 Paperfluidic molecular diagnostic chip. a) Image of paperfluidic chip. Scale bar = 1 inch. b) Blueprint drawings and dimensions for the adhesive base of the chip. c) Schematic of chip fabrication steps: i. the cut adhesive sheets are peeled from the protective backing and placed adhesive side-up on the benchtop (the white area is adhesive sheet, the dark grey areas are holes that have been cut out of the adhesive sheet); ii. a 0.375 inch diameter PES disc is manually placed directly over the 0.3 inch diameter hole in the adhesive sheet, and the top tab is folded down along the perforation over the PES; iii. the sample port is now created (the light grey color indicates areas where the adhesive sheet has been folded over onto itself, rendering the area non-adhesive); iv. the bottom tab is folded up along the perforation to create a toehold for what will become the sample port cover film to prevent evaporation during the LAMP heat step; v. the 0.3 inch diameter circle of tape that had been cut out of the adhesive sheet to make the sample port is peeled off the protective backing where it stayed behind and is manually placed adhesive side-down onto the adhesive sheet 2 inches down from the center of the sample port. This will align with the sample port when the cover film is placed during LAMP and prevent the DNA and/or PES membrane from sticking to the adhesive cover film; vi. the absorbent pad is manually aligned and placed over the sample port extending towards the left side of the chip; vii–viii. the lower middle section of the chip is then folded over the centerline perforation over the absorbent pad to create a hydrophobic (tape) barrier between the absorbent pad and the LFD strip; ix. the LFD strip is then manually aligned with the sample port center and placed down extending over the right side of the chip; x–xi. the bottom two remaining sections of the adhesive sheet are folded up over the perforations to seal the chip from the bottom; xii. the fabrication is now complete, and the chip is then flipped over so that the PES membrane sample port is right side-up and ready for use.</figcaption></figure><h3 id="18a12f87-f92c-46d0-9f64-77d9f13ff26a" class="">Equipment Used + Procedure:</h3><p id="415db900-a2cf-48ef-abef-61927d112f94" class="">
+</p><p id="df2df634-a4ec-47ef-a7aa-11e1ce75e0a3" class="">Equipment used:</p><ul id="ae3fdbc3-b2ce-461f-8893-f422876c3657" class="bulleted-list"><li>Lysed sample in a tube</li></ul><ul id="fbbd53fb-af4b-4b31-8613-6cec11e2f453" class="bulleted-list"><li>Standard letter size self-adhesive laminating sheets (Fellowes product # 5221502) for base</li></ul><ul id="c8ad8e40-2362-46d5-82cd-e8d8a08fc1fa" class="bulleted-list"><li>Polyethersulfone (PES) filter paper (Millipore, cat# GPWP04700) for sample pad</li></ul><ul id="a408d15f-c201-4ed7-a30a-fe9303d28835" class="bulleted-list"><li>Cellulose blotting paper (Whatman GB003, cat# 09-301-400) for absorbent pad</li></ul><ul id="6c9a7a43-bbfe-4f0e-8dfb-a69f5db59f70" class="bulleted-list"><li>Universal LFD Strip</li></ul><ul id="ca80e880-3de1-413e-8c71-a7d7e06de3ba" class="bulleted-list"><li>Electrical Heating Block</li></ul><ul id="8186c2b4-6ced-46c6-936b-16fea76f364b" class="bulleted-list"><li>Pipetting Equipment</li></ul><p id="7ba5cf91-a52a-45d5-8770-1ea3a52c50c9" class="">
+</p><p id="9c958c76-ef02-41b9-a823-457a1e3ef7e8" class="">For procedure, see figure 2:</p><figure id="c8b059db-70d1-4e73-834b-af25e4c1798c" class="image"><a href="Paperfluidic%20molecular%20diagnostic%20chip%20+%20LFA%20detec%20a9ced1abc30e4f2c8f87c198f973dc5d/Untitled%201.png"><img style="width:1418px" src="Paperfluidic%20molecular%20diagnostic%20chip%20+%20LFA%20detec%20a9ced1abc30e4f2c8f87c198f973dc5d/Untitled%201.png"/></a><figcaption>Fig. 2 Fluidic demonstration of chip operation. i) A lysed sample, demonstrated here using 100 μL of blue dye, is placed onto the sample port of the paperfluidic chip using a pipette or dropper. ii) The prevailing capillary forces generated by the absorbent pad directly underneath the sample port quickly wick the liquid waste through the PES membrane and away from the sample port leaving the solid phase behind. iii) A first wash of 70% ethanol, demonstrated here using 200 μL of yellow dye, is filtered through the sample port. iv) The wash buffer will wick through to the absorbent pad, removing impurities and leaving behind the purified precipitated DNA. v–vi) A final wash of 100% ethanol, demonstrated here using 100 μL of water, is filtered through the sample port, leaving just the purified DNA on the PES membrane. vii) The waste absorbent pad is discarded by ripping off the left side of the chip at the designated perforation. viii) The LAMP reaction mix is placed directly onto the sample port where the purified DNA remains, and the bottom tab of the chip is folded up over the designated perforation to act as a cover film for the sample port and prevent evaporation during the heat step. ix) After the heat incubation for LAMP, the cover film is peeled back using the toehold to expose the sample port on top, and peeled under the chip to expose the sample port outlet on the bottom, thereby removing the hydrophobic (tape) barrier between the sample port and the LFD strip. The PES membrane is now in direct contact with the LFD strip and the amplified products are then eluted onto the strip by adding 50 μL of water to the sample port. x) The eluted products wick through the LFD strip towards the right.</figcaption></figure><h3 id="438834c7-09a9-4033-8cd6-9351bbc0b061" class="">Key Findings</h3><ul id="797d47b9-3600-49b7-adf9-909a2859d0b4" class="bulleted-list"><li>Very cheap, relatively easy to make platform that is also readily disposable</li></ul><ul id="6ee096a6-27a1-49cc-86a1-96d1d9fa2b30" class="bulleted-list"><li>Use of standard products with minimal fabrication</li></ul><ul id="b12d471c-1b93-435a-911f-ca9e4cf74a36" class="bulleted-list"><li>Extracts DNA using standard filter paper techniques</li></ul><ul id="6b0ec205-bcd7-4f1a-bd8f-fa20e087a941" class="bulleted-list"><li>Cons: Requires manual fluid transfer using pipettes, cannot be easily multiplexed, some reagents need cold storage</li></ul></div></article></body></html>

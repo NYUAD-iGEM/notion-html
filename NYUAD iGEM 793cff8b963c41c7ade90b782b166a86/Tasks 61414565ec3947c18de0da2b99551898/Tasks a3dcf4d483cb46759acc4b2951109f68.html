@@ -1,0 +1,627 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Tasks</title><style>
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, YuMincho, "Yu Mincho", "Hiragino Mincho ProN", "Hiragino Mincho Pro", "Songti TC", "Songti SC", "SimSun", "Nanum Myeongjo", NanumMyeongjo, Batang, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC', 'Noto Sans CJK KR'; }
+
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC', 'Noto Sans Mono CJK KR'; }
+
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, YuMincho, "Yu Mincho", "Hiragino Mincho ProN", "Hiragino Mincho Pro", "Songti TC", "Songti SC", "SimSun", "Nanum Myeongjo", NanumMyeongjo, Batang, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC', 'Noto Sans CJK KR'; }
+
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC', 'Noto Sans Mono CJK KR'; }
+
+.highlight-default {
+}
+.highlight-gray {
+	color: rgb(155,154,151);
+}
+.highlight-brown {
+	color: rgb(100,71,58);
+}
+.highlight-orange {
+	color: rgb(217,115,13);
+}
+.highlight-yellow {
+	color: rgb(223,171,1);
+}
+.highlight-teal {
+	color: rgb(15,123,108);
+}
+.highlight-blue {
+	color: rgb(11,110,153);
+}
+.highlight-purple {
+	color: rgb(105,64,165);
+}
+.highlight-pink {
+	color: rgb(173,26,114);
+}
+.highlight-red {
+	color: rgb(224,62,62);
+}
+.highlight-gray_background {
+	background: rgb(235,236,237);
+}
+.highlight-brown_background {
+	background: rgb(233,229,227);
+}
+.highlight-orange_background {
+	background: rgb(250,235,221);
+}
+.highlight-yellow_background {
+	background: rgb(251,243,219);
+}
+.highlight-teal_background {
+	background: rgb(221,237,234);
+}
+.highlight-blue_background {
+	background: rgb(221,235,241);
+}
+.highlight-purple_background {
+	background: rgb(234,228,242);
+}
+.highlight-pink_background {
+	background: rgb(244,223,235);
+}
+.highlight-red_background {
+	background: rgb(251,228,228);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(55, 53, 47, 0.6);
+	fill: rgba(55, 53, 47, 0.6);
+}
+.block-color-brown {
+	color: rgb(100,71,58);
+	fill: rgb(100,71,58);
+}
+.block-color-orange {
+	color: rgb(217,115,13);
+	fill: rgb(217,115,13);
+}
+.block-color-yellow {
+	color: rgb(223,171,1);
+	fill: rgb(223,171,1);
+}
+.block-color-teal {
+	color: rgb(15,123,108);
+	fill: rgb(15,123,108);
+}
+.block-color-blue {
+	color: rgb(11,110,153);
+	fill: rgb(11,110,153);
+}
+.block-color-purple {
+	color: rgb(105,64,165);
+	fill: rgb(105,64,165);
+}
+.block-color-pink {
+	color: rgb(173,26,114);
+	fill: rgb(173,26,114);
+}
+.block-color-red {
+	color: rgb(224,62,62);
+	fill: rgb(224,62,62);
+}
+.block-color-gray_background {
+	background: rgb(235,236,237);
+}
+.block-color-brown_background {
+	background: rgb(233,229,227);
+}
+.block-color-orange_background {
+	background: rgb(250,235,221);
+}
+.block-color-yellow_background {
+	background: rgb(251,243,219);
+}
+.block-color-teal_background {
+	background: rgb(221,237,234);
+}
+.block-color-blue_background {
+	background: rgb(221,235,241);
+}
+.block-color-purple_background {
+	background: rgb(234,228,242);
+}
+.block-color-pink_background {
+	background: rgb(244,223,235);
+}
+.block-color-red_background {
+	background: rgb(251,228,228);
+}
+.select-value-color-default { background-color: rgba(206,205,202,0.5); }
+.select-value-color-gray { background-color: rgba(155,154,151, 0.4); }
+.select-value-color-brown { background-color: rgba(140,46,0,0.2); }
+.select-value-color-orange { background-color: rgba(245,93,0,0.2); }
+.select-value-color-yellow { background-color: rgba(233,168,0,0.2); }
+.select-value-color-green { background-color: rgba(0,135,107,0.2); }
+.select-value-color-blue { background-color: rgba(0,120,223,0.2); }
+.select-value-color-purple { background-color: rgba(103,36,222,0.2); }
+.select-value-color-pink { background-color: rgba(221,0,129,0.2); }
+.select-value-color-red { background-color: rgba(255,0,26,0.2); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="a3dcf4d4-83cb-4675-9acc-4b2951109f68" class="page sans"><header><h1 class="page-title">Tasks</h1></header><div class="page-body"><table class="collection-content"><thead><tr><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.4);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesTitle"><path d="M7.73943662,8.6971831 C7.77640845,8.7834507 7.81338028,8.8943662 7.81338028,9.00528169 C7.81338028,9.49823944 7.40669014,9.89260563 6.91373239,9.89260563 C6.53169014,9.89260563 6.19894366,9.64612676 6.08802817,9.30105634 L5.75528169,8.33978873 L2.05809859,8.33978873 L1.72535211,9.30105634 C1.61443662,9.64612676 1.2693662,9.89260563 0.887323944,9.89260563 C0.394366197,9.89260563 0,9.49823944 0,9.00528169 C0,8.8943662 0.0246478873,8.7834507 0.0616197183,8.6971831 L2.46478873,2.48591549 C2.68661972,1.90669014 3.24119718,1.5 3.90669014,1.5 C4.55985915,1.5 5.12676056,1.90669014 5.34859155,2.48591549 L7.73943662,8.6971831 Z M2.60035211,6.82394366 L5.21302817,6.82394366 L3.90669014,3.10211268 L2.60035211,6.82394366 Z M11.3996479,3.70598592 C12.7552817,3.70598592 14,4.24823944 14,5.96126761 L14,9.07922535 C14,9.52288732 13.6549296,9.89260563 13.2112676,9.89260563 C12.8169014,9.89260563 12.471831,9.59683099 12.4225352,9.19014085 C12.028169,9.6584507 11.3257042,9.95422535 10.5492958,9.95422535 C9.60035211,9.95422535 8.47887324,9.31338028 8.47887324,7.98239437 C8.47887324,6.58978873 9.60035211,6.08450704 10.5492958,6.08450704 C11.3380282,6.08450704 12.040493,6.33098592 12.4348592,6.81161972 L12.4348592,5.98591549 C12.4348592,5.38204225 11.9172535,4.98767606 11.1285211,4.98767606 C10.6602113,4.98767606 10.2411972,5.11091549 9.80985915,5.38204225 C9.72359155,5.43133803 9.61267606,5.46830986 9.50176056,5.46830986 C9.18133803,5.46830986 8.91021127,5.1971831 8.91021127,4.86443662 C8.91021127,4.64260563 9.0334507,4.44542254 9.19366197,4.34683099 C9.87147887,3.90316901 10.6232394,3.70598592 11.3996479,3.70598592 Z M11.1778169,8.8943662 C11.6830986,8.8943662 12.1760563,8.72183099 12.4348592,8.37676056 L12.4348592,7.63732394 C12.1760563,7.29225352 11.6830986,7.11971831 11.1778169,7.11971831 C10.5616197,7.11971831 10.056338,7.45246479 10.056338,8.0193662 C10.056338,8.57394366 10.5616197,8.8943662 11.1778169,8.8943662 Z M0.65625,11.125 L13.34375,11.125 C13.7061869,11.125 14,11.4188131 14,11.78125 C14,12.1436869 13.7061869,12.4375 13.34375,12.4375 L0.65625,12.4375 C0.293813133,12.4375 4.43857149e-17,12.1436869 0,11.78125 C-4.43857149e-17,11.4188131 0.293813133,11.125 0.65625,11.125 Z"></path></svg></span>Name</th><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.4);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesPerson"><path d="M9.625,10.8465 C8.91187,10.2891 8.12088,9.926 7,9.26013 L7,8.71938 C7.21175,8.47612 7.392,8.176 7.53813,7.83213 C7.94587,7.7315 8.3125,7.33425 8.3125,7 C8.3125,6.51788 8.1095,6.32713 7.8715,6.17137 C7.8715,6.15562 7.875,6.14162 7.875,6.125 C7.875,5.41362 7.4375,3.5 5.25,3.5 C3.0625,3.5 2.625,5.4145 2.625,6.125 C2.625,6.14162 2.6285,6.15562 2.6285,6.17137 C2.3905,6.32713 2.1875,6.51788 2.1875,7 C2.1875,7.33425 2.55413,7.7315 2.96187,7.833 C3.108,8.176 3.28825,8.47612 3.5,8.71938 L3.5,9.26013 C2.37912,9.92513 1.58812,10.2882 0.875,10.8465 C0.041125,11.4984 0,12.4688 0,14 L10.5,14 C10.5,12.4688 10.4589,11.4984 9.625,10.8465 Z M13.125,7.3465 C12.4119,6.78912 11.6209,6.426 10.5,5.76013 L10.5,5.21938 C10.7118,4.97613 10.892,4.676 11.0381,4.33213 C11.4459,4.2315 11.8125,3.83425 11.8125,3.5 C11.8125,3.01787 11.6095,2.82713 11.3715,2.67138 C11.3715,2.65562 11.375,2.64162 11.375,2.625 C11.375,1.91363 10.9375,0 8.75,0 C6.5625,0 6.125,1.9145 6.125,2.625 C6.125,2.64162 6.1285,2.65562 6.1285,2.67138 C6.11188,2.68275 6.09787,2.69588 6.08125,2.70725 C7.83212,3.066 8.59688,4.54825 8.72813,5.74787 C8.97575,6.00863 9.1875,6.39625 9.1875,7 C9.1875,7.60288 8.771,8.20312 8.18388,8.51462 C8.127,8.624 8.06662,8.729 8.00275,8.82962 C8.155,8.91537 8.30025,8.99675 8.44025,9.07463 C9.08075,9.4325 9.63375,9.74137 10.164,10.1561 C10.3022,10.2638 10.4204,10.3801 10.5289,10.4991 L14,10.4991 C14,8.96875 13.9589,7.99837 13.125,7.3465 Z"></path></svg></span>Assign</th><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.4);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesDate"><path d="M10.8889,5.5 L3.11111,5.5 L3.11111,7.05556 L10.8889,7.05556 L10.8889,5.5 Z M12.4444,1.05556 L11.6667,1.05556 L11.6667,0 L10.1111,0 L10.1111,1.05556 L3.88889,1.05556 L3.88889,0 L2.33333,0 L2.33333,1.05556 L1.55556,1.05556 C0.692222,1.05556 0.00777777,1.75556 0.00777777,2.61111 L0,12.5 C0,13.3556 0.692222,14 1.55556,14 L12.4444,14 C13.3,14 14,13.3556 14,12.5 L14,2.61111 C14,1.75556 13.3,1.05556 12.4444,1.05556 Z M12.4444,12.5 L1.55556,12.5 L1.55556,3.94444 L12.4444,3.94444 L12.4444,12.5 Z M8.55556,8.61111 L3.11111,8.61111 L3.11111,10.1667 L8.55556,10.1667 L8.55556,8.61111 Z"></path></svg></span>Due Date</th><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.4);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesText"><path d="M7,4.56818 C7,4.29204 6.77614,4.06818 6.5,4.06818 L0.5,4.06818 C0.223858,4.06818 0,4.29204 0,4.56818 L0,5.61364 C0,5.88978 0.223858,6.11364 0.5,6.11364 L6.5,6.11364 C6.77614,6.11364 7,5.88978 7,5.61364 L7,4.56818 Z M0.5,1 C0.223858,1 0,1.223858 0,1.5 L0,2.54545 C0,2.8216 0.223858,3.04545 0.5,3.04545 L12.5,3.04545 C12.7761,3.04545 13,2.8216 13,2.54545 L13,1.5 C13,1.223858 12.7761,1 12.5,1 L0.5,1 Z M0,8.68182 C0,8.95796 0.223858,9.18182 0.5,9.18182 L11.5,9.18182 C11.7761,9.18182 12,8.95796 12,8.68182 L12,7.63636 C12,7.36022 11.7761,7.13636 11.5,7.13636 L0.5,7.13636 C0.223858,7.13636 0,7.36022 0,7.63636 L0,8.68182 Z M0,11.75 C0,12.0261 0.223858,12.25 0.5,12.25 L9.5,12.25 C9.77614,12.25 10,12.0261 10,11.75 L10,10.70455 C10,10.4284 9.77614,10.20455 9.5,10.20455 L0.5,10.20455 C0.223858,10.20455 0,10.4284 0,10.70455 L0,11.75 Z"></path></svg></span>Property</th><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.4);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesSelect"><path d="M7,13 C10.31348,13 13,10.31371 13,7 C13,3.68629 10.31348,1 7,1 C3.68652,1 1,3.68629 1,7 C1,10.31371 3.68652,13 7,13 Z M3.75098,5.32278 C3.64893,5.19142 3.74268,5 3.90869,5 L10.09131,5 C10.25732,5 10.35107,5.19142 10.24902,5.32278 L7.15771,9.29703 C7.07764,9.39998 6.92236,9.39998 6.84229,9.29703 L3.75098,5.32278 Z"></path></svg></span>Status</th></tr></thead><tbody><tr id="118827f6-07de-4c10-a629-310fabe8c039"><td class="cell-title"><a href="Tasks%20a3dcf4d483cb46759acc4b2951109f68/To%20centrifuge%20or%20not%20to%20centrifuge%20(DNA%20EXTRACTION%20118827f607de4c10a629310fabe8c039.html">To centrifuge or not to centrifuge (DNA EXTRACTION)</a></td><td class="cell-F$#]"><span class="user"><span class="icon text-icon user-icon"><span class="user-icon-inner">A</span></span>Adrian Villanueva</span><span class="user"><span class="icon text-icon user-icon"><span class="user-icon-inner">A</span></span>Antonina Bar</span></td><td class="cell-z.OF"><time>@Aug 1, 2020</time></td><td class="cell-ZRbR"></td><td class="cell-3E6J"><span class="selected-value select-value-color-green">Completed</span></td></tr><tr id="7a5ca0f3-fbca-45d6-b7ec-7313767a86a5"><td class="cell-title"><a href="Tasks%20a3dcf4d483cb46759acc4b2951109f68/Signaling%20methods%20for%20Cas-12%207a5ca0f3fbca45d6b7ec7313767a86a5.html">Signaling methods for Cas-12</a></td><td class="cell-F$#]"><span class="user"><img src="https://lh5.googleusercontent.com/-SW-Rvk1TFGY/AAAAAAAAAAI/AAAAAAAAAAA/AMZuucn21DfrJ3OENXVnnJ0bfjdjHVdT0Q/photo.jpg" class="icon user-icon"/>Yujeong Oh</span></td><td class="cell-z.OF"><time>@Jul 23, 2020</time></td><td class="cell-ZRbR"></td><td class="cell-3E6J"><span class="selected-value select-value-color-green">Completed</span></td></tr><tr id="9d606f1c-c76e-4452-bf5e-7a6a0db86af0"><td class="cell-title"><a href="Tasks%20a3dcf4d483cb46759acc4b2951109f68/Continue%20drafting%20logo%209d606f1cc76e4452bf5e7a6a0db86af0.html">Continue drafting logo</a></td><td class="cell-F$#]"></td><td class="cell-z.OF"><time>@Aug 1, 2020</time></td><td class="cell-ZRbR"></td><td class="cell-3E6J"><span class="selected-value select-value-color-yellow">In Progress</span></td></tr><tr id="a34b94d6-91d2-4fb9-beaa-fdc73eca90a0"><td class="cell-title"><a href="Tasks%20a3dcf4d483cb46759acc4b2951109f68/Create%20Design%20Brief%20to%20Guide%20Logo%20Desgin%20and%20Brand%20a34b94d691d24fb9beaafdc73eca90a0.html">Create Design Brief to Guide Logo Desgin and Branding</a></td><td class="cell-F$#]"><span class="user"><span class="icon text-icon user-icon"><span class="user-icon-inner">Q</span></span>Quim Paredes</span></td><td class="cell-z.OF"><time>@Aug 1, 2020 11:59 PM</time></td><td class="cell-ZRbR"></td><td class="cell-3E6J"><span class="selected-value select-value-color-yellow">In Progress</span></td></tr><tr id="fc3af886-2c05-4ccb-990c-d634f0033411"><td class="cell-title"><a href="Tasks%20a3dcf4d483cb46759acc4b2951109f68/Identify%20basic%20requirements%20from%20the%20Bio%20team%20fc3af8862c054ccb990cd634f0033411.html">Identify basic requirements from the Bio team</a></td><td class="cell-F$#]"><span class="user"><img src="Tasks%20a3dcf4d483cb46759acc4b2951109f68/Identify%20basic%20requirements%20from%20the%20Bio%20team%20fc3af8862c054ccb990cd634f0033411/65948525_2451846998377134_8658290723092692992_o.jpeg" class="icon user-icon"/>Zura Jashi</span><span class="user"><span class="icon text-icon user-icon"><span class="user-icon-inner">Y</span></span>Yaman Garg</span></td><td class="cell-z.OF"><time>@Jul 22, 2020</time></td><td class="cell-ZRbR"></td><td class="cell-3E6J"><span class="selected-value select-value-color-green">Completed</span></td></tr><tr id="2862f17a-87c7-460e-a598-d2ddd40064c2"><td class="cell-title"><a href="Tasks%20a3dcf4d483cb46759acc4b2951109f68/Update%20team%20timeline%202862f17a87c7460ea598d2ddd40064c2.html">Update team timeline</a></td><td class="cell-F$#]"><span class="user"><img src="https://lh3.googleusercontent.com/a-/AOh14GjztG5GTD-G71oYsMK3N3FOGLVg5UZfzy6YFlYo=s100" class="icon user-icon"/>Jeff Hu</span></td><td class="cell-z.OF"><time>@Jul 22, 2020</time></td><td class="cell-ZRbR"></td><td class="cell-3E6J"><span class="selected-value select-value-color-green">Completed</span></td></tr><tr id="5b4ef717-1ae4-42dd-9ef5-cee9fc3536ef"><td class="cell-title"><a href="Tasks%20a3dcf4d483cb46759acc4b2951109f68/Research%20Personal%20Usage%205b4ef7171ae442dd9ef5cee9fc3536ef.html">Research Personal Usage</a></td><td class="cell-F$#]"><span class="user"><img src="https://lh3.googleusercontent.com/a-/AOh14GjztG5GTD-G71oYsMK3N3FOGLVg5UZfzy6YFlYo=s100" class="icon user-icon"/>Jeff Hu</span></td><td class="cell-z.OF"><time>@Jul 30, 2020</time></td><td class="cell-ZRbR"></td><td class="cell-3E6J"><span class="selected-value select-value-color-yellow">In Progress</span></td></tr><tr id="a38b8f80-c935-4782-94fc-a9cd9d47d3aa"><td class="cell-title"><a href="Tasks%20a3dcf4d483cb46759acc4b2951109f68/Answer%20Questions%20from%20Stakeholders%20a38b8f80c935478294fca9cd9d47d3aa.html">Answer Questions from Stakeholders</a></td><td class="cell-F$#]"><span class="user"><img src="https://lh3.googleusercontent.com/a-/AOh14GiAT9l2WyU4uSOVY-fq3yqFJpQfsGgbAxuaSsDmSg=s100" class="icon user-icon"/>Roba Olana</span></td><td class="cell-z.OF"><time>@Aug 2, 2020</time></td><td class="cell-ZRbR"></td><td class="cell-3E6J"><span class="selected-value select-value-color-yellow">In Progress</span></td></tr><tr id="278f9829-c6e7-4bf0-aa25-825b5dc630b0"><td class="cell-title"><a href="Tasks%20a3dcf4d483cb46759acc4b2951109f68/Fill%20in%20preliminary%20safety%20forms%20278f9829c6e74bf0aa25825b5dc630b0.html">Fill in preliminary safety forms</a></td><td class="cell-F$#]"><span class="user"><img src="https://lh5.googleusercontent.com/-SW-Rvk1TFGY/AAAAAAAAAAI/AAAAAAAAAAA/AMZuucn21DfrJ3OENXVnnJ0bfjdjHVdT0Q/photo.jpg" class="icon user-icon"/>Yujeong Oh</span></td><td class="cell-z.OF"><time>@Jul 25, 2020</time></td><td class="cell-ZRbR"></td><td class="cell-3E6J"><span class="selected-value select-value-color-green">Completed</span></td></tr><tr id="f9553f27-3a35-43cc-9ffa-018f1b0415e0"><td class="cell-title"><a href="Tasks%20a3dcf4d483cb46759acc4b2951109f68/Quantify%20costs%20and%20time%20with%20wet-lab%20procedure%20f9553f273a3543cc9ffa018f1b0415e0.html">Quantify costs and time with wet-lab procedure</a></td><td class="cell-F$#]"></td><td class="cell-z.OF"><time>@Jul 28, 2020</time></td><td class="cell-ZRbR"></td><td class="cell-3E6J"><span class="selected-value select-value-color-default">Next Up</span></td></tr><tr id="c6f7ce1e-501b-4d69-9f08-c6433c182717"><td class="cell-title"><a href="Tasks%20a3dcf4d483cb46759acc4b2951109f68/Replicate%20an%20online%20site%20on%20iGEM%20Wiki%20c6f7ce1e501b4d699f08c6433c182717.html">Replicate an online site on iGEM Wiki</a></td><td class="cell-F$#]"><span class="user"><span class="icon text-icon user-icon"><span class="user-icon-inner">P</span></span>Prajjwal Bhattarai</span><span class="user"><img src="https://lh3.googleusercontent.com/a-/AOh14GiAT9l2WyU4uSOVY-fq3yqFJpQfsGgbAxuaSsDmSg=s100" class="icon user-icon"/>Roba Olana</span></td><td class="cell-z.OF"></td><td class="cell-ZRbR"></td><td class="cell-3E6J"><span class="selected-value select-value-color-green">Completed</span></td></tr><tr id="bddecaff-2ccd-46f7-85ed-8cc45b416071"><td class="cell-title"><a href="Tasks%20a3dcf4d483cb46759acc4b2951109f68/Search%20how%20the%20filter%20extraction%20from%20eDNA%20is%20diff%20bddecaff2ccd46f785ed8cc45b416071.html">Search how the filter extraction from eDNA is different from swab extraction</a></td><td class="cell-F$#]"><span class="user"><span class="icon text-icon user-icon"><span class="user-icon-inner">Y</span></span>Yaman Garg</span></td><td class="cell-z.OF"><time>@Jul 30, 2020</time></td><td class="cell-ZRbR"></td><td class="cell-3E6J"><span class="selected-value select-value-color-green">Completed</span></td></tr><tr id="b776f2e7-8c8a-4f98-9530-38078ed6128b"><td class="cell-title"><a href="Tasks%20a3dcf4d483cb46759acc4b2951109f68/To%20recruit%20or%20not%20Grace%20MIA%20b776f2e78c8a4f98953038078ed6128b.html">To recruit or not? Grace MIA?</a></td><td class="cell-F$#]"><span class="user"><span class="icon text-icon user-icon"><span class="user-icon-inner">Y</span></span>Yaman Garg</span></td><td class="cell-z.OF"><time>@Jul 22, 2020</time></td><td class="cell-ZRbR"></td><td class="cell-3E6J"><span class="selected-value select-value-color-green">Completed</span></td></tr><tr id="595731f8-3d82-4666-a3c4-5ff1142e7e87"><td class="cell-title"><a href="Tasks%20a3dcf4d483cb46759acc4b2951109f68/Answer%20questions%20about%20Data%20v%20Infectious%20Diseases%20595731f83d824666a3c45ff1142e7e87.html">Answer questions about Data v Infectious Diseases</a></td><td class="cell-F$#]"><span class="user"><span class="icon text-icon user-icon"><span class="user-icon-inner">P</span></span>Prajjwal Bhattarai</span></td><td class="cell-z.OF"><time>@Jul 26, 2020</time></td><td class="cell-ZRbR"></td><td class="cell-3E6J"><span class="selected-value select-value-color-green">Completed</span></td></tr><tr id="cafeee80-bf1e-45ed-ac26-3260a4005e2f"><td class="cell-title"><a href="Tasks%20a3dcf4d483cb46759acc4b2951109f68/Create%20Facebook%20post%20and%20start%20application%20for%20eng%20cafeee80bf1e45edac263260a4005e2f.html">Create Facebook post and start application for engineering team recruitment</a></td><td class="cell-F$#]"><span class="user"><span class="icon text-icon user-icon"><span class="user-icon-inner">Y</span></span>Yaman Garg</span></td><td class="cell-z.OF"><time>@Jul 23, 2020</time></td><td class="cell-ZRbR"></td><td class="cell-3E6J"><span class="selected-value select-value-color-green">Completed</span></td></tr><tr id="8b7e1734-c52b-4b82-bcdb-3bcf62484ea0"><td class="cell-title"><a href="Tasks%20a3dcf4d483cb46759acc4b2951109f68/Bump%20Facebook%20post%20for%20engg%20applications%208b7e1734c52b4b82bcdb3bcf62484ea0.html">Bump Facebook post for engg applications</a></td><td class="cell-F$#]"><span class="user"><span class="icon text-icon user-icon"><span class="user-icon-inner">Y</span></span>Yaman Garg</span></td><td class="cell-z.OF"><time>@Jul 29, 2020</time></td><td class="cell-ZRbR"></td><td class="cell-3E6J"><span class="selected-value select-value-color-green">Completed</span></td></tr><tr id="4193208b-a602-4ec9-9131-9a285fcba408"><td class="cell-title"><a href="Tasks%20a3dcf4d483cb46759acc4b2951109f68/Find%20out%20if%20DNA%20Extraction%20Phase%20definitely%20needs%20%204193208ba6024ec991319a285fcba408.html">Find out if DNA Extraction Phase definitely needs centrifuge or not (or a timeline on when we expect to know)</a></td><td class="cell-F$#]"><span class="user"><img src="Tasks%20a3dcf4d483cb46759acc4b2951109f68/Identify%20basic%20requirements%20from%20the%20Bio%20team%20fc3af8862c054ccb990cd634f0033411/65948525_2451846998377134_8658290723092692992_o.jpeg" class="icon user-icon"/>Zura Jashi</span></td><td class="cell-z.OF"><time>@Jul 22, 2020</time></td><td class="cell-ZRbR"></td><td class="cell-3E6J"><span class="selected-value select-value-color-green">Completed</span></td></tr><tr id="e1796cbf-2f88-4afc-8ed3-cfb5ebc54599"><td class="cell-title"><a href="Tasks%20a3dcf4d483cb46759acc4b2951109f68/Biology%20member%20recruitment%20post%20e1796cbf2f884afc8ed3cfb5ebc54599.html">Biology member recruitment post</a></td><td class="cell-F$#]"><span class="user"><img src="https://lh5.googleusercontent.com/-SW-Rvk1TFGY/AAAAAAAAAAI/AAAAAAAAAAA/AMZuucn21DfrJ3OENXVnnJ0bfjdjHVdT0Q/photo.jpg" class="icon user-icon"/>Yujeong Oh</span></td><td class="cell-z.OF"><time>@Jul 29, 2020</time></td><td class="cell-ZRbR"></td><td class="cell-3E6J"><span class="selected-value select-value-color-green">Completed</span></td></tr><tr id="82a70c67-0871-4ed9-ac68-0b4e9039ac3f"><td class="cell-title"><a href="Tasks%20a3dcf4d483cb46759acc4b2951109f68/Research%20Data%20and%20Infectious%20Diseases%20Control%2082a70c6708714ed9ac680b4e9039ac3f.html">Research Data and Infectious Diseases Control</a></td><td class="cell-F$#]"><span class="user"><span class="icon text-icon user-icon"><span class="user-icon-inner">P</span></span>Prajjwal Bhattarai</span></td><td class="cell-z.OF"><time>@Jul 23, 2020</time></td><td class="cell-ZRbR"></td><td class="cell-3E6J"><span class="selected-value select-value-color-green">Completed</span></td></tr><tr id="a7943e7b-7683-4155-8a8a-b06b0c1cd96b"><td class="cell-title"><a href="Tasks%20a3dcf4d483cb46759acc4b2951109f68/Try%20and%20get%20a%20simulation%20working%20for%20CRISPR%20Cas%20Sy%20a7943e7b768341558a8ab06b0c1cd96b.html">Try and get a simulation working for CRISPR/Cas System</a></td><td class="cell-F$#]"><span class="user"><span class="icon text-icon user-icon"><span class="user-icon-inner">A</span></span>Adrian Villanueva</span></td><td class="cell-z.OF"><time>@Aug 27, 2020 → Sep 1, 2020</time></td><td class="cell-ZRbR"></td><td class="cell-3E6J"><span class="selected-value select-value-color-default">Next Up</span></td></tr><tr id="27806d85-ee22-4ffa-a91e-3b269ec4b786"><td class="cell-title"><a href="Tasks%20a3dcf4d483cb46759acc4b2951109f68/Research%20Cas13%20reporting%20mechanisms%2027806d85ee224ffaa91e3b269ec4b786.html">Research Cas13 reporting mechanisms</a></td><td class="cell-F$#]"><span class="user"><span class="icon text-icon user-icon"><span class="user-icon-inner">M</span></span>Marko Susic</span></td><td class="cell-z.OF"><time>@Jul 28, 2020</time></td><td class="cell-ZRbR"></td><td class="cell-3E6J"><span class="selected-value select-value-color-green">Completed</span></td></tr><tr id="65c8362a-13ca-49a0-81e2-0b4c49ad2179"><td class="cell-title"><a href="Tasks%20a3dcf4d483cb46759acc4b2951109f68/Authorization%20to%20reside%20on%20campus%2065c8362a13ca49a081e20b4c49ad2179.html">Authorization to reside on campus</a></td><td class="cell-F$#]"><span class="user"><span class="icon text-icon user-icon"><span class="user-icon-inner">A</span></span>Adrian Villanueva</span></td><td class="cell-z.OF"><time>@Jul 26, 2020</time></td><td class="cell-ZRbR"></td><td class="cell-3E6J"><span class="selected-value select-value-color-green">Completed</span></td></tr><tr id="b2830fea-f961-4c10-8266-89ad59c7839c"><td class="cell-title"><a href="Tasks%20a3dcf4d483cb46759acc4b2951109f68/Schedule%20and%20conduct%20meetings%20with%20Jesper,%20Maya,%20S%20b2830feaf9614c10826689ad59c7839c.html">Schedule and conduct meetings with Jesper, Maya, Steffanie to gauge fit for team</a></td><td class="cell-F$#]"><span class="user"><span class="icon text-icon user-icon"><span class="user-icon-inner">Y</span></span>Yaman Garg</span></td><td class="cell-z.OF"><time>@Aug 3, 2020</time></td><td class="cell-ZRbR"></td><td class="cell-3E6J"><span class="selected-value select-value-color-green">Completed</span></td></tr><tr id="068cbc63-68dd-4f16-ac4d-fdcf1c000ab4"><td class="cell-title"><a href="Tasks%20a3dcf4d483cb46759acc4b2951109f68/Finish%20interview%20appointments%20with%20Abhay,%20Hunwoo,%20%20068cbc6368dd4f16ac4dfdcf1c000ab4.html">Finish interview appointments with Abhay, Hunwoo, and Dimitrios</a></td><td class="cell-F$#]"><span class="user"><img src="https://lh3.googleusercontent.com/a-/AOh14GiAT9l2WyU4uSOVY-fq3yqFJpQfsGgbAxuaSsDmSg=s100" class="icon user-icon"/>Roba Olana</span><span class="user"><img src="https://lh5.googleusercontent.com/-SW-Rvk1TFGY/AAAAAAAAAAI/AAAAAAAAAAA/AMZuucn21DfrJ3OENXVnnJ0bfjdjHVdT0Q/photo.jpg" class="icon user-icon"/>Yujeong Oh</span><span class="user"><span class="icon text-icon user-icon"><span class="user-icon-inner">Y</span></span>Yaman Garg</span></td><td class="cell-z.OF"><time>@Jul 27, 2020</time></td><td class="cell-ZRbR"></td><td class="cell-3E6J"><span class="selected-value select-value-color-green">Completed</span></td></tr><tr id="c6a4c407-d4a5-47b2-b127-e510839e946f"><td class="cell-title"><a href="Tasks%20a3dcf4d483cb46759acc4b2951109f68/Look%20at%20current%20wiki%20helpers%20c6a4c407d4a547b2b127e510839e946f.html">Look at current wiki helpers</a></td><td class="cell-F$#]"><span class="user"><span class="icon text-icon user-icon"><span class="user-icon-inner">P</span></span>Prajjwal Bhattarai</span><span class="user"><img src="https://lh3.googleusercontent.com/a-/AOh14GiAT9l2WyU4uSOVY-fq3yqFJpQfsGgbAxuaSsDmSg=s100" class="icon user-icon"/>Roba Olana</span></td><td class="cell-z.OF"></td><td class="cell-ZRbR"></td><td class="cell-3E6J"><span class="selected-value select-value-color-green">Completed</span></td></tr><tr id="8f19ae7b-8a0d-49cf-876a-d1e4e690b4f6"><td class="cell-title"><a href="Tasks%20a3dcf4d483cb46759acc4b2951109f68/Specify%20how%20exactly%20expert%20have%20used%20data%20so%20far%20a%208f19ae7b8a0d49cf876ad1e4e690b4f6.html">Specify how exactly expert have used data so far and questions we have for them</a></td><td class="cell-F$#]"><span class="user"><span class="icon text-icon user-icon"><span class="user-icon-inner">P</span></span>Prajjwal Bhattarai</span></td><td class="cell-z.OF"><time>@Aug 2, 2020</time></td><td class="cell-ZRbR"></td><td class="cell-3E6J"><span class="selected-value select-value-color-green">Completed</span></td></tr><tr id="b68922ba-08d1-4809-a158-db7e3f8837d9"><td class="cell-title"><a href="Tasks%20a3dcf4d483cb46759acc4b2951109f68/Find%20CRISPR-Cas13%20gRNA%20design%20protocol%20&amp;%20software%20b68922ba08d14809a158db7e3f8837d9.html">Find CRISPR-Cas13 gRNA design protocol &amp; software</a></td><td class="cell-F$#]"><span class="user"><img src="https://lh5.googleusercontent.com/-SW-Rvk1TFGY/AAAAAAAAAAI/AAAAAAAAAAA/AMZuucn21DfrJ3OENXVnnJ0bfjdjHVdT0Q/photo.jpg" class="icon user-icon"/>Yujeong Oh</span></td><td class="cell-z.OF"><time>@Aug 1, 2020</time></td><td class="cell-ZRbR"></td><td class="cell-3E6J"><span class="selected-value select-value-color-yellow">In Progress</span></td></tr><tr id="8faa0034-ed59-403f-891c-ba6b115c197f"><td class="cell-title"><a href="Tasks%20a3dcf4d483cb46759acc4b2951109f68/Design%20CRISPR-Cas12%20gRNA%208faa0034ed59403f891cba6b115c197f.html">Design CRISPR-Cas12 gRNA</a></td><td class="cell-F$#]"><span class="user"><img src="https://lh5.googleusercontent.com/-SW-Rvk1TFGY/AAAAAAAAAAI/AAAAAAAAAAA/AMZuucn21DfrJ3OENXVnnJ0bfjdjHVdT0Q/photo.jpg" class="icon user-icon"/>Yujeong Oh</span></td><td class="cell-z.OF"><time>@Aug 1, 2020</time></td><td class="cell-ZRbR"></td><td class="cell-3E6J"><span class="selected-value select-value-color-yellow">In Progress</span></td></tr><tr id="bcbbe7bc-923d-4871-b7ff-285362bbe164"><td class="cell-title"><a href="Tasks%20a3dcf4d483cb46759acc4b2951109f68/Design%20CRISPR-Cas13%20gRNA%20bcbbe7bc923d4871b7ff285362bbe164.html">Design CRISPR-Cas13 gRNA</a></td><td class="cell-F$#]"><span class="user"><img src="https://lh5.googleusercontent.com/-SW-Rvk1TFGY/AAAAAAAAAAI/AAAAAAAAAAA/AMZuucn21DfrJ3OENXVnnJ0bfjdjHVdT0Q/photo.jpg" class="icon user-icon"/>Yujeong Oh</span></td><td class="cell-z.OF"><time>@Aug 1, 2020</time></td><td class="cell-ZRbR"></td><td class="cell-3E6J"><span class="selected-value select-value-color-yellow">In Progress</span></td></tr><tr id="a2168e28-fd06-4b80-8ced-b1fede894550"><td class="cell-title"><a href="Tasks%20a3dcf4d483cb46759acc4b2951109f68/Biology%20Order%20sheet%20a2168e28fd064b808cedb1fede894550.html">Biology Order sheet</a></td><td class="cell-F$#]"><span class="user"><img src="https://lh5.googleusercontent.com/-SW-Rvk1TFGY/AAAAAAAAAAI/AAAAAAAAAAA/AMZuucn21DfrJ3OENXVnnJ0bfjdjHVdT0Q/photo.jpg" class="icon user-icon"/>Yujeong Oh</span><span class="user"><span class="icon text-icon user-icon"><span class="user-icon-inner">A</span></span>Adrian Villanueva</span><span class="user"><span class="icon text-icon user-icon"><span class="user-icon-inner">A</span></span>Antonina Bar</span><span class="user"><span class="icon text-icon user-icon"><span class="user-icon-inner">M</span></span>Marko Susic</span></td><td class="cell-z.OF"><time>@Aug 1, 2020</time></td><td class="cell-ZRbR"></td><td class="cell-3E6J"><span class="selected-value select-value-color-yellow">In Progress</span></td></tr><tr id="5d500748-71da-45e1-89bd-601a9c31e1b3"><td class="cell-title"><a href="Tasks%20a3dcf4d483cb46759acc4b2951109f68/Research%20case%20studies%20for%20POC%20that%20use%20Nucleic%20Aci%205d50074871da45e189bd601a9c31e1b3.html">Research case studies for POC that use Nucleic Acid methods (Around 1-2 per day)</a></td><td class="cell-F$#]"><span class="user"><span class="icon text-icon user-icon"><span class="user-icon-inner">Y</span></span>Yaman Garg</span></td><td class="cell-z.OF"></td><td class="cell-ZRbR"></td><td class="cell-3E6J"><span class="selected-value select-value-color-default">Next Up</span></td></tr><tr id="f93e7b9b-86b2-4a8c-944f-357192b348f4"><td class="cell-title"><a href="Tasks%20a3dcf4d483cb46759acc4b2951109f68/Untitled%20f93e7b9b86b24a8c944f357192b348f4.html">Untitled</a></td><td class="cell-F$#]"></td><td class="cell-z.OF"></td><td class="cell-ZRbR"></td><td class="cell-3E6J"></td></tr><tr id="d3feca28-31dc-4375-80ca-b99c47a8e450"><td class="cell-title"><a href="Tasks%20a3dcf4d483cb46759acc4b2951109f68/Design%20PCR,%20LAMP,%20and%20RPA%20primers%20d3feca2831dc437580cab99c47a8e450.html">Design PCR, LAMP, and RPA primers</a></td><td class="cell-F$#]"><span class="user"><span class="icon text-icon user-icon"><span class="user-icon-inner">M</span></span>Marko Susic</span></td><td class="cell-z.OF"><time>@Aug 1, 2020</time></td><td class="cell-ZRbR"></td><td class="cell-3E6J"><span class="selected-value select-value-color-green">Completed</span></td></tr><tr id="64ccebbd-17be-4935-929c-34ab0de1171f"><td class="cell-title"><a href="Tasks%20a3dcf4d483cb46759acc4b2951109f68/Replicate%20spygen%20animation%2064ccebbd17be4935929c34ab0de1171f.html">Replicate spygen animation</a></td><td class="cell-F$#]"><span class="user"><span class="icon text-icon user-icon"><span class="user-icon-inner">P</span></span>Prajjwal Bhattarai</span><span class="user"><img src="https://lh3.googleusercontent.com/a-/AOh14GiAT9l2WyU4uSOVY-fq3yqFJpQfsGgbAxuaSsDmSg=s100" class="icon user-icon"/>Roba Olana</span></td><td class="cell-z.OF"></td><td class="cell-ZRbR"></td><td class="cell-3E6J"><span class="selected-value select-value-color-default">Next Up</span></td></tr><tr id="076f00fd-0b71-4a9d-b341-2774da01168c"><td class="cell-title"><a href="Tasks%20a3dcf4d483cb46759acc4b2951109f68/Reach%20out%20to%20experts%20with%20questions%20about%20data%20usa%20076f00fd0b714a9db3412774da01168c.html">Reach out to experts with questions about data usage</a></td><td class="cell-F$#]"><span class="user"><img src="https://lh3.googleusercontent.com/a-/AOh14GiAT9l2WyU4uSOVY-fq3yqFJpQfsGgbAxuaSsDmSg=s100" class="icon user-icon"/>Roba Olana</span><span class="user"><span class="icon text-icon user-icon"><span class="user-icon-inner">P</span></span>Prajjwal Bhattarai</span></td><td class="cell-z.OF"></td><td class="cell-ZRbR"></td><td class="cell-3E6J"><span class="selected-value select-value-color-default">Next Up</span></td></tr><tr id="ab2183dc-20b6-4537-aa52-86fb21b6597f"><td class="cell-title"><a href="Tasks%20a3dcf4d483cb46759acc4b2951109f68/Ensure%20that%20the%20nucleic%20extraction%20research%20uncove%20ab2183dc20b64537aa5286fb21b6597f.html">Ensure that the nucleic extraction research uncover the secrets of Biomeme</a></td><td class="cell-F$#]"><span class="user"><span class="icon text-icon user-icon"><span class="user-icon-inner">Y</span></span>Yaman Garg</span></td><td class="cell-z.OF"><time>@Aug 3, 2020</time></td><td class="cell-ZRbR"></td><td class="cell-3E6J"><span class="selected-value select-value-color-green">Completed</span></td></tr><tr id="d1d331ef-b909-4656-a572-34699b3edfad"><td class="cell-title"><a href="Tasks%20a3dcf4d483cb46759acc4b2951109f68/Why%20are%20people%20not%20using%20Biomeme%20d1d331efb9094656a57234699b3edfad.html">Why are people not using Biomeme?</a></td><td class="cell-F$#]"></td><td class="cell-z.OF"></td><td class="cell-ZRbR"></td><td class="cell-3E6J"><span class="selected-value select-value-color-default">Next Up</span></td></tr><tr id="5a930523-79fb-4adc-8bb5-90c0abf0c905"><td class="cell-title"><a href="Tasks%20a3dcf4d483cb46759acc4b2951109f68/Port%20Notion%20onto%20iGEM%20Servers%205a93052379fb4adc8bb590c0abf0c905.html">Port Notion onto iGEM Servers</a></td><td class="cell-F$#]"><span class="user"><span class="icon text-icon user-icon"><span class="user-icon-inner">P</span></span>Prajjwal Bhattarai</span></td><td class="cell-z.OF"></td><td class="cell-ZRbR"></td><td class="cell-3E6J"><span class="selected-value select-value-color-yellow">In Progress</span></td></tr><tr id="df27c8d7-680f-4541-b406-08f07f5b8c65"><td class="cell-title"><a href="Tasks%20a3dcf4d483cb46759acc4b2951109f68/Port%20Benchling%20onto%20iGEM%20Servers%20df27c8d7680f4541b40608f07f5b8c65.html">Port Benchling onto iGEM Servers</a></td><td class="cell-F$#]"><span class="user"><span class="icon text-icon user-icon"><span class="user-icon-inner">P</span></span>Prajjwal Bhattarai</span></td><td class="cell-z.OF"></td><td class="cell-ZRbR"></td><td class="cell-3E6J"><span class="selected-value select-value-color-default">Next Up</span></td></tr><tr id="09c7fc0f-8bd8-41c8-8c97-2e10f33d03ab"><td class="cell-title"><a href="Tasks%20a3dcf4d483cb46759acc4b2951109f68/Look%20for%20potential%20Lysis%20Buffers%2009c7fc0f8bd841c88c972e10f33d03ab.html">Look for potential Lysis Buffers</a></td><td class="cell-F$#]"><span class="user"><span class="icon text-icon user-icon"><span class="user-icon-inner">A</span></span>Adrian Villanueva</span></td><td class="cell-z.OF"><time>@Aug 8, 2020</time></td><td class="cell-ZRbR"></td><td class="cell-3E6J"><span class="selected-value select-value-color-yellow">In Progress</span></td></tr><tr id="ffd323b6-7aa9-4537-b0c4-f50e4b3a24e2"><td class="cell-title"><a href="Tasks%20a3dcf4d483cb46759acc4b2951109f68/Update%20the%20Engineering%20Notion%20Process%20Page%20ffd323b67aa94537b0c4f50e4b3a24e2.html">Update the Engineering Notion Process Page</a></td><td class="cell-F$#]"><span class="user"><span class="icon text-icon user-icon"><span class="user-icon-inner">Y</span></span>Yaman Garg</span></td><td class="cell-z.OF"><time>@Aug 6, 2020</time></td><td class="cell-ZRbR"></td><td class="cell-3E6J"><span class="selected-value select-value-color-yellow">In Progress</span></td></tr><tr id="3538aced-b008-43fc-892d-f9449a3ceb89"><td class="cell-title"><a href="Tasks%20a3dcf4d483cb46759acc4b2951109f68/Onboard%20new%20engineering%20members%20and%20provide%20them%20w%203538acedb00843fc892df9449a3ceb89.html">Onboard new engineering members and provide them with research tasks</a></td><td class="cell-F$#]"><span class="user"><span class="icon text-icon user-icon"><span class="user-icon-inner">Y</span></span>Yaman Garg</span><span class="user"><img src="https://lh3.googleusercontent.com/a-/AOh14GiAT9l2WyU4uSOVY-fq3yqFJpQfsGgbAxuaSsDmSg=s100" class="icon user-icon"/>Roba Olana</span></td><td class="cell-z.OF"><time>@Aug 6, 2020</time></td><td class="cell-ZRbR"></td><td class="cell-3E6J"><span class="selected-value select-value-color-yellow">In Progress</span></td></tr><tr id="f62922d6-2585-4f85-9d88-66038ac7a840"><td class="cell-title"><a href="Tasks%20a3dcf4d483cb46759acc4b2951109f68/Untitled%20f62922d625854f859d8866038ac7a840.html">Untitled</a></td><td class="cell-F$#]"></td><td class="cell-z.OF"></td><td class="cell-ZRbR"></td><td class="cell-3E6J"></td></tr><tr id="4d014af1-c008-40ba-98d8-32b1bbebb2a5"><td class="cell-title"><a href="Tasks%20a3dcf4d483cb46759acc4b2951109f68/Task%204d014af1c00840ba98d832b1bbebb2a5.html">Task</a></td><td class="cell-F$#]"></td><td class="cell-z.OF"></td><td class="cell-ZRbR"></td><td class="cell-3E6J"></td></tr></tbody></table></div></article></body></html>
